@@ -1,0 +1,77 @@
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\x86\e_sqlite3.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\x64\e_sqlite3.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Stokuntan.exe.config
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Stokuntan.exe
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Stokuntan.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\ClosedXML.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\DocumentFormat.OpenXml.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\EntityFramework.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\EntityFramework.SqlServer.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\ExcelNumberFormat.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\MaterialDesignColors.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\MaterialDesignThemes.Wpf.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Newtonsoft.Json.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PCLCrypto.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.BCrypt.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.Kernel32.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.NCrypt.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.Windows.Core.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLite-net.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLiteNetExtensions.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLitePCLRaw.batteries_green.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLitePCLRaw.core.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Validation.dll
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\ClosedXML.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\ClosedXML.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\DocumentFormat.OpenXml.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\EntityFramework.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\EntityFramework.SqlServer.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\ExcelNumberFormat.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\MaterialDesignColors.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\MaterialDesignThemes.Wpf.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\MaterialDesignThemes.Wpf.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Newtonsoft.Json.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PCLCrypto.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.BCrypt.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.Kernel32.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.NCrypt.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\PInvoke.Windows.Core.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLite-net.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\SQLiteNetExtensions.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\bin\Debug\Validation.xml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\MainWindow.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\ProgressDialog\ProgressDialog.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Halaman Utama.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Customer.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Satuan.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Supplier.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah_Kategori.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Detail Jual.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Pembelian.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Reject.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Tabel.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\MainWindow.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\ProgressDialog\ProgressDialog.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Halaman Utama.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Customer.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Satuan.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Supplier.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah_Kategori.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Detail Jual.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Pembelian.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Reject.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tampilan Tabel.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\App.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan_Content.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan_MarkupCompile.cache
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan_MarkupCompile.lref
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\App.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.g.resources
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.Properties.Resources.resources
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.csproj.GenerateResource.cache
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.csproj.CoreCompileInputs.cache
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.csproj.CopyComplete
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.exe
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.pdb

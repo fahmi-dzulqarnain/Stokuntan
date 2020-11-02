@@ -1,0 +1,87 @@
+﻿<Window x:Class="Stokuntan.Windows.Tambah_Satuan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Title="Tambah" Height="315" Width="320">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Duration="00:00:1" Storyboard.TargetProperty="Opacity">
+                    <DoubleAnimation From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="-90"
+                              RenderingBias="Performance" ShadowDepth="0.5"/>
+            </Grid.Effect>
+
+            <Rectangle Fill="White"
+                   RadiusX="8" RadiusY="8"
+                   Margin="10"/>
+        </Grid>
+
+        <Grid>
+            <Button x:Name="BtnClose"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Height="40" Margin="10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Click="BtnClose_Click">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Close"
+                                             Foreground="Black"
+                                             VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <StackPanel Orientation="Vertical"
+                    Margin="20">
+                <StackPanel Orientation="Horizontal" Margin="10,20,0,10">
+                    <materialDesign:PackIcon Kind="ScaleBalance" Width="35" Height="35"/>
+
+                    <TextBlock Text="Tambah Satuan Barang"
+                           FontSize="15" Margin="10 0 0 0"
+                           FontFamily="Segoe UI Semibold"
+                           VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Nama Satuan"
+                           FontSize="13" Margin="15,15,0,0"
+                           FontFamily="Segoe UI"/>
+                        <TextBox x:Name="txtBoxNamaSatuan" HorizontalAlignment="Left"
+                                 Width="250" Margin="15,10,0,0" FontSize="12"
+                                 materialDesign:HintAssist.Hint="(Cth. Kurma, Herbal)"/>
+                        <TextBlock Text="Ukuran Dalam Gram"
+                           FontSize="13" Margin="15,15,0,0"
+                           FontFamily="Segoe UI"/>
+                        <TextBox x:Name="txtBoxDalamGram" HorizontalAlignment="Left"
+                                 Width="250" Margin="15,10,0,0" FontSize="12"
+                                 materialDesign:HintAssist.Hint="Harus Dalam Bentuk Angka"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"
+                        HorizontalAlignment="Right">
+                    <Button x:Name="BtnSimpanSatuan" Content="Simpan"
+                        FontSize="12" FontFamily="Segoe UI Light" IsDefault="True"
+                        Width="80" Foreground="White" Click="BtnSimpanSatuan_Click"/>
+                    <Button x:Name="BtnBatalSimpan" Content="Batal"
+                        FontSize="12" FontFamily="Segoe UI Light"
+                        Width="80" Margin="10" Foreground="White"
+                        Click="BtnBatalSimpan_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

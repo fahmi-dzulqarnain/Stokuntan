@@ -1,0 +1,1498 @@
+﻿<Window x:Class="Stokuntan.Windows.Halaman_Utama"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        Height="720" Width="1280"
+        WindowStyle="None" BorderThickness="0" MinWidth="1180" MinHeight="640"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        mc:Ignorable="d"
+        Title="Halaman Utama" >
+    <Window.Resources>
+        <Storyboard x:Key="TambahOpen">
+            <DoubleAnimationUsingKeyFrames 
+                Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="440"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="TambahClose">
+            <DoubleAnimationUsingKeyFrames 
+                Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="440"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="JualOpen">
+            <DoubleAnimationUsingKeyFrames 
+                Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="{Binding ScreenWidth}"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="JualClose">
+            <DoubleAnimationUsingKeyFrames 
+                Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="{Binding ScreenWidth}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="fadeIn">
+            <ObjectAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation BeginTime="0:0:0.0" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.7"/>
+        </Storyboard>
+
+        <Storyboard x:Key="fadeOut">
+            <ObjectAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="GridHeaderMenu" Height="40"
+              VerticalAlignment="Top"
+              Background="#642B09" Grid.ColumnSpan="2">
+
+            <TextBlock Text="APLIKASI STOKUNTAN"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" Foreground="White"
+                       FontSize="13" FontWeight="SemiBold"
+                       FontFamily="Segoe UI" Margin="20 0 0 0"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="400 0 0 0">
+
+                <Grid x:Name="BtnBeranda" Cursor="Hand"
+                      Background="#865840" Width="120"
+                      MouseDown="BtnBeranda_MouseDown">
+
+                    <TextBlock
+                        Text="BERANDA"
+                        FontSize="12" FontWeight="Regular"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"/>
+
+                </Grid>
+
+                <Grid x:Name="BtnPembelian" Cursor="Hand"
+                      Width="120" MouseDown="BtnPembelian_MouseDown">
+
+                    <TextBlock
+                        Text="PEMBELIAN"
+                        FontSize="12" FontWeight="Regular"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"/>
+
+                </Grid>
+
+                <Grid x:Name="BtnStok" Cursor="Hand" 
+                      Width="120" MouseDown="BtnStok_MouseDown">
+
+                    <TextBlock
+                        Text="STOK"
+                        FontSize="12" FontWeight="Regular"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"/>
+
+                </Grid>
+
+                <Grid x:Name="BtnPenjualan" Cursor="Hand" 
+                      Width="120" MouseDown="BtnPenjualan_MouseDown">
+
+                    <TextBlock
+                        x:Name="txtMenuBarcode"
+                        Text="PENJUALAN"
+                        FontSize="12" FontWeight="Regular"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"/>
+
+                </Grid>
+
+                <Grid x:Name="BtnLaporan" Cursor="Hand" 
+                      Width="120" MouseDown="BtnLaporan_MouseDown">
+
+                    <TextBlock
+                        Text="LAPORAN"
+                        FontSize="12" FontWeight="Regular"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"/>
+
+                </Grid>
+
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                <Button x:Name="minimizeButton"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="MinimizeButton_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White"/>
+                </Button>
+
+                <Button x:Name="normalizeButton"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="NormalizeButton_Click">
+                    <materialDesign:PackIcon x:Name="iconRestore" Kind="WindowRestore" Foreground="White"/>
+                </Button>
+
+                <Button x:Name="keluarButton"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="KeluarButton_Click">
+                    <materialDesign:PackIcon Kind="Close" Foreground="White"/>
+                </Button>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid x:Name="GridBeranda" Margin="0 40 0 0"
+              Visibility="Collapsed">
+            <Grid x:Name="GridProfil" Margin="20"
+                  HorizontalAlignment="Left">
+                <Rectangle Width="210" RadiusX="10" RadiusY="10" 
+                           Stroke="DarkGray"/>
+                <StackPanel Orientation="Vertical"  Margin="20 40 ">
+                    <Image Source="/Images/logo.png" Width="130" Height="130"
+                       VerticalAlignment="Top"/>
+                    <TextBlock Text="Nama Usaha" FontWeight="SemiBold" TextAlignment="Center" Margin="0 20 0 0"/>
+                    <TextBlock x:Name="txtNamaUsaha" Text="CV. Lorem Ipsum Dolor" FontSize="18" 
+                               TextWrapping="Wrap" Width="165" TextAlignment="Center" Margin="0 10 0 0"/>
+                    <TextBlock Text="Alamat Usaha" FontWeight="SemiBold" TextAlignment="Center" Margin="0 25 0 0"/>
+                    <TextBlock x:Name="txtAlamat" Text="CV. Lorem Ipsum Dolor" FontSize="15" 
+                               TextWrapping="Wrap" Width="165" TextAlignment="Center" Margin="0 10 0 0"/>
+                    <TextBlock Text="Kontak Usaha" FontWeight="SemiBold" TextAlignment="Center" Margin="0 25 0 0"/>
+                    <TextBlock x:Name="txtKontakUsaha" Text="CV. Lorem Ipsum Dolor" FontSize="15" 
+                               TextWrapping="Wrap" Width="165" TextAlignment="Center" Margin="0 10 0 0"/>
+                </StackPanel>
+                
+            </Grid>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="280 20 0 0">
+                <Grid Background="#FFCCBC" Width="250" Height="100">
+                    <materialDesign:PackIcon Kind="Money" Width="25" Height="25" Margin="10 10 0 0"/>
+                    <TextBlock Text="Saldo Kas" FontSize="13" Margin="40 13 0 0" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="txtSaldoKas" Text="Rp0,00" FontSize="30" Margin="15 0 15 15" VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right" Foreground="#3E2723"/>
+                </Grid>
+                <Grid Background="#FFE0B2" Width="250" Height="100">
+                    <materialDesign:PackIcon Kind="Money" Width="25" Height="25" Margin="10 10 0 0" Foreground="#b71c1c"/>
+                    <TextBlock Text="Saldo Utang" FontSize="13" Margin="40 13 0 0" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="txtSaldoUtang" Text="Rp0,00" FontSize="30" Margin="15 0 15 15" VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right" Foreground="#3E2723"/>
+                </Grid>
+                <Grid Background="#FFECB3" Width="250" Height="100">
+                    <materialDesign:PackIcon Kind="MoneyOff" Width="25" Height="25" Margin="10 10 0 0" />
+                    <TextBlock Text="Saldo Piutang" FontSize="13" Margin="40 13 0 0" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="txtSaldoPiutang" Text="Rp0,00" FontSize="30" Margin="15 0 15 15" VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right" Foreground="#3E2723"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="GridPembelian" Margin="0 40 0 0"
+              Visibility="Collapsed">
+            <Grid x:Name="GridMenu" Height="70"
+                      VerticalAlignment="Top"
+                      Background="#F2CF9D">
+
+                <StackPanel Orientation="Horizontal" Margin="30 0 0 0">
+                    <Button x:Name="BtnTambahPembelian" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTambahPembelian_Click">
+                        <Grid>
+                            <Border x:Name="recTambahBeli"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Add" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tambah Pembelian" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnUbahPembelian" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnUbahPembelian_Click">
+                        <Grid>
+                            <Border x:Name="recUbahBeli"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Edit" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Ubah Pembelian" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnHapusPembelian" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnHapusPembelian_Click">
+                        <Grid>
+                            <Border x:Name="recHapusBeli"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Trash" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Hapus Pembelian" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnTampilanTabel" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTampilanTabel_Click">
+                        <Grid>
+                            <Border x:Name="recTampilanTabel"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Menu" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Tampilan Tabel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <!--<Button x:Name="BtnEksporExcel" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnEksporExcel_Click">
+                        <Grid>
+                            <Border x:Name="recEksporExcel"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="FileExcel" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Ekspor Excel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+                </StackPanel>
+
+                <ComboBox x:Name="cmbBoxKategoriCari"
+                          materialDesign:HintAssist.Hint="Kategori Pencarian..."
+                          IsReadOnly="False" HorizontalAlignment="Right" Margin="0 0 230 0"
+                          Foreground="Black" Width="140" IsTextSearchEnabled="True"
+                          ItemsSource="{Binding KategoriCari}"/>
+
+                <Grid HorizontalAlignment="Right" Margin="10,0,30,0">
+                    <Rectangle Width="170" Height="25" RadiusX="12" RadiusY="12" Stroke="#FF7C7C7C"/>
+                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                        <materialDesign:PackIcon Kind="Search" Foreground="Black"
+                                                     VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBoxCariPembelian"
+                                 KeyUp="TxtBoxCariPembelian_KeyUp"
+                                 VerticalAlignment="Center" BorderThickness="0"
+                                 Width="120" Margin="5,0,0,0" Foreground="Black"
+                                 materialDesign:HintAssist.Hint="Cari Pembelian..."/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <Grid Margin="20,90,20,20">
+                <DataGrid x:Name="TablePembelian" AutoGenerateColumns="False"
+                          HeadersVisibility="Column" CanUserResizeRows="False" 
+                          CanUserAddRows="False" GridLinesVisibility="Horizontal" 
+                          Background="White" IsReadOnly="True"
+                          CanUserReorderColumns="False" FontSize="12">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Height" Value="35"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Margin" Value="15 0 0 0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Height" Value="35"/>
+                            <Setter Property="Width" Value="Auto"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Style>
+                    </DataGrid.Resources>
+                </DataGrid>
+
+                <StackPanel x:Name="NoDataPembelian" Orientation="Vertical"
+                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Images/add_first_data.jpg" Width="170"/>
+                    <TextBlock Text="Tambahkan Data Pembelian"
+                               Foreground="Black" Margin="0 20 0 0"
+                               FontSize="16" FontFamily="Segoe UI Semibold Italic"/>
+                    <TextBlock Text="Sepertinya Anda Belum Menambahkan Data Pembelian"
+                               Foreground="Black" Margin="0 10 0 0" Width="190"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               FontSize="14" FontFamily="Segoe UI Semilight"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="GridTambahPembelian" Visibility="Visible"
+                  HorizontalAlignment="Right" Width="0"
+                  Background="Transparent">
+
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-80" Opacity="0.31" ShadowDepth="3" />
+                </Grid.Effect>
+
+                <Grid Background="White"
+                      VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <Button x:Name="CloseTambahButton" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}" Width="50"
+                                Height="30" Margin="10"
+                                Click="CloseTambahButton_Click">
+                            <materialDesign:PackIcon 
+                            Foreground="Black"
+                            Kind="ArrowRight"
+                            Width="20" Height="20"/>
+                        </Button>
+                        <TextBlock x:Name="txtTitle" Text="Tambah Pembelian" 
+                                   Foreground="Black"
+                               VerticalAlignment="Top" FontSize="16"
+                               FontFamily="Segoe UI Semibold" Margin="12"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="40 90 40 40">
+                        <Grid HorizontalAlignment="Left">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Tanggal Masuk" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <DatePicker x:Name="txtBoxTglMasuk"
+                                    Margin="140 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Width="130"  Foreground="Black"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Kategori Barang" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxKategori" Foreground="Black"
+                                  Width="130" Margin="140 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Kategori}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                            <Button x:Name="BtnAddKategori" Background="Transparent"
+                                BorderBrush="Transparent" Margin="280 10 0 0"
+                                Click="BtnAddKategori_Click">
+                                <materialDesign:PackIcon 
+                                    Kind="AddCircle" Foreground="#C46404"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Merek" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxMerek" Foreground="Black"
+                                 Width="200" Margin="140 0 0 0"
+                                 VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -1 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Jumlah Stok" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxJumlahStok" Foreground="Black"
+                                 Width="200" Margin="140 0 0 0"
+                                 VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Satuan" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxSatuan" Foreground="Black"
+                                  Width="130" Margin="140 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Satuan}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                            <Button x:Name="BtnAddSatuan" Background="Transparent"
+                                BorderBrush="Transparent" Margin="280 10 0 0"
+                                Click="BtnAddSatuan_Click">
+                                <materialDesign:PackIcon 
+                                    Kind="AddCircle" Foreground="#C46404"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Ref. / No. Nota" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxRefNota" Foreground="Black"
+                                  Width="130" Margin="140 0 0 0" 
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Harga Beli" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxHargaBeli" Foreground="Black"
+                                 Width="200" Margin="140 0 0 0"
+                                 TextChanged="TxtBoxHargaBeli_TextChanged"
+                                 VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Harga Jual" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxHargaJual" Foreground="Black"
+                                 Width="105" Margin="140 0 0 0"
+                                     TextChanged="TxtBoxHargaJual_TextChanged"
+                                     HorizontalAlignment="Left"
+                                 VerticalAlignment="Bottom" FontSize="13"/>
+                            <TextBlock Text="/" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Bottom"
+                                   Margin="255 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxSatuanJual" Foreground="Black"
+                                  Width="75" Margin="265 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Satuan}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Metode Bayar" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxMetodeBayar" Foreground="Black"
+                                  Width="130" Margin="140 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Metode}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Supplier" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxSupplier" Foreground="Black"
+                                  Width="130" Margin="140 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Supplier}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                            <Button x:Name="BtnAddSupplier" Background="Transparent"
+                                BorderBrush="Transparent" Margin="280 10 0 0"
+                                Click="BtnAddSupplier_Click">
+                                <materialDesign:PackIcon 
+                                    Kind="AddCircle" Foreground="#C46404"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Deskripsi / Ket" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxDeskripsi" Foreground="Black"
+                                 Width="210" Margin="140 0 0 0"
+                                 VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Button x:Name="btnTambahPembelian2" HorizontalAlignment="Right"
+                                Click="BtnTambahPembelian2_Click" Margin="0 50 0 0"
+                                Background="#C46404" BorderBrush="#C46404"
+                                Content="Tambah Pembelian" FontWeight="Light"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="GridStok" Margin="0 40 0 0"
+              Visibility="Collapsed">
+            <Grid x:Name="GridMenuStok" Height="70"
+                      VerticalAlignment="Top"
+                      Background="#F2CF9D">
+
+                <StackPanel Orientation="Horizontal" Margin="30 0 0 0">
+                    <Button x:Name="BtnTambahReject" Margin="-15 0 0 0" 
+                            VerticalAlignment="Center" Height="40"
+                            BorderBrush="Transparent" Background="Transparent"
+                            Click="BtnTambahReject_Click">
+                        <Grid>
+                            <Border x:Name="recTambahReject"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="165"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="BrokenImage" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tambah Barang Reject" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnDaftarBarangReject" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnDaftarBarangReject_Click">
+                        <Grid>
+                            <Border x:Name="recDaftarRejectTabelStok"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="160"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Menu" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Daftar Barang Reject" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <!--<Button x:Name="BtnEksporExcel" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnEksporExcel_Click">
+                        <Grid>
+                            <Border x:Name="recEksporExcel"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="FileExcel" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Ekspor Excel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+                </StackPanel>
+
+                <Grid HorizontalAlignment="Right" Margin="10,0,30,0">
+                    <Rectangle Width="170" Height="25" RadiusX="12" RadiusY="12" Stroke="#FF7C7C7C"/>
+                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                        <materialDesign:PackIcon Kind="Search" Foreground="Black"
+                                                     VerticalAlignment="Center"/>
+                        <TextBox x:Name="TxtBoxCariStok"
+                                 KeyUp="TxtBoxCariStok_KeyUp"
+                                 VerticalAlignment="Center" BorderThickness="0"
+                                 Width="120" Margin="5,0,0,0" Foreground="Black"
+                                 materialDesign:HintAssist.Hint="Cari Stok..."/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <Grid Margin="20,90,20,20">
+                <DataGrid x:Name="TableStok" AutoGenerateColumns="False"
+                          HeadersVisibility="Column" CanUserResizeRows="False" 
+                          CanUserAddRows="False" GridLinesVisibility="Horizontal" 
+                          Background="White" IsReadOnly="True"
+                          CanUserReorderColumns="False" FontSize="12">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Height" Value="45"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Margin" Value="15 0 0 0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Height" Value="35"/>
+                            <Setter Property="Width" Value="Auto"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Style>
+
+                        <DataGridTemplateColumn x:Key="BtnDetBeli" Header="Detail Beli" MinWidth="80">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                    x:Name="BtnDetailPembelian"
+                                    Content="Detail Pembelian" Height="23"
+                                    Click="BtnDetailPembelian_Click"
+                                    FontFamily="Segoe UI Semilight" FontSize="10"
+                                    Foreground="#fff"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Resources>
+                </DataGrid>
+
+                <StackPanel x:Name="NoDataStok" Orientation="Vertical"
+                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Images/Sold-Out.png" Width="150"/>
+                    <TextBlock Text="Stok Kosong! Atau Telah Terjual"
+                               Foreground="Black" Margin="0 20 0 0"
+                               FontSize="16" FontFamily="Segoe UI Semibold Italic"/>
+                    <TextBlock Text="Tambahkan Data Pembelian Barang Untuk Mengisi Kembali Stok"
+                               Foreground="Black" Margin="0 10 0 0" Width="220"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               FontSize="14" FontFamily="Segoe UI Semilight"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="GridTambahReject" Visibility="Visible"
+                  HorizontalAlignment="Right" Width="0"
+                  Background="Transparent">
+
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-80" Opacity="0.31" ShadowDepth="3" />
+                </Grid.Effect>
+
+                <Grid Background="White"
+                      VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <Button x:Name="CloseTambahRejectButton" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}" Width="50"
+                                Height="30" Margin="10"
+                                Click="CloseTambahRejectButton_Click">
+                            <materialDesign:PackIcon 
+                            Foreground="Black"
+                            Kind="ArrowRight"
+                            Width="20" Height="20"/>
+                        </Button>
+                        <TextBlock Text="Tambah Barang Reject" 
+                                   Foreground="Black"
+                               VerticalAlignment="Top" FontSize="16"
+                               FontFamily="Segoe UI Semibold" Margin="12"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="40 90 40 40">
+                        <Grid HorizontalAlignment="Left">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Tanggal Reject" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <DatePicker x:Name="txtBoxTglReject"
+                                    Margin="170 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Width="130"  Foreground="Black"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Pilih Nama Stok" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxNamaStok" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding NamaStok}" 
+                                      SelectionChanged="CmbBoxNamaStok_SelectionChanged"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Pilih Harga Jual" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxHargaJual" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Stok Reject (Gram)" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxStokRejectDlmGr" Foreground="Black"
+                                  Width="130" Margin="170 0 0 0" 
+                                     TextChanged="TxtBoxStokRejectDlmGr_TextChanged"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Sebab Reject" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxSebabReject" Foreground="Black"
+                                  Width="130" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding SebabReject}"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Total Rugi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBlock x:Name="TxtTotalRugi" Foreground="Black"
+                                  Width="130" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Button x:Name="BtnTambahReject2" HorizontalAlignment="Right"
+                                Click="BtnTambahReject2_Click" Margin="0 50 0 0"
+                                Background="#C46404" BorderBrush="#C46404"
+                                Content="Tambah Barang Reject" FontWeight="Light"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid x:Name="GridPenjualan" Margin="0 40 0 0"
+              Visibility="Collapsed">
+            <Grid x:Name="GridMenuPenjualan" Height="70"
+                      VerticalAlignment="Top"
+                      Background="#F2CF9D">
+
+                <StackPanel Orientation="Horizontal" Margin="30 0 0 0">
+                    <Button x:Name="BtnTambahPenjualan" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTambahPenjualan_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Add" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tambah Penjualan" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnUbahPenjualan" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnUbahPembelian_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Edit" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Ubah Penjualan" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnHapusPenjualan" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnHapusPenjualan_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Trash" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Hapus Penjualan" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <!--<Button x:Name="BtnTampilanTabelPenjualan" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTampilanTabelPenjualan_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Menu" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Tampilan Tabel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+
+                    <!--<Button x:Name="BtnEksporExcel" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnEksporExcel_Click">
+                        <Grid>
+                            <Border x:Name="recEksporExcel"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="FileExcel" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Ekspor Excel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+                </StackPanel>
+
+                <ComboBox x:Name="cmbBoxKategoriCariPenjualan"
+                          materialDesign:HintAssist.Hint="Kategori Pencarian..."
+                          IsReadOnly="False" HorizontalAlignment="Right" Margin="0 0 230 0"
+                          Foreground="Black" Width="140" IsTextSearchEnabled="True"
+                          ItemsSource="{Binding KategoriJual}"/>
+
+                <Grid HorizontalAlignment="Right" Margin="10,0,30,0">
+                    <Rectangle Width="170" Height="25" RadiusX="12" RadiusY="12" Stroke="#FF7C7C7C"/>
+                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                        <materialDesign:PackIcon Kind="Search" Foreground="Black"
+                                                     VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBoxCariPenjualan"
+                                 KeyUp="TxtBoxCariPenjualan_KeyUp"
+                                 VerticalAlignment="Center" BorderThickness="0"
+                                 Width="120" Margin="5,0,0,0" Foreground="Black"
+                                 materialDesign:HintAssist.Hint="Cari Penjualan..."/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <Grid Margin="20,90,20,20">
+                <DataGrid x:Name="TablePenjualan" AutoGenerateColumns="False"
+                          HeadersVisibility="Column" CanUserResizeRows="False" 
+                          CanUserAddRows="False" GridLinesVisibility="Horizontal" 
+                          Background="White" IsReadOnly="True"
+                          CanUserReorderColumns="False" FontSize="12">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Height" Value="45"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Margin" Value="15 0 0 0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Height" Value="35"/>
+                            <Setter Property="Width" Value="Auto"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Style>
+
+                        <DataGridTemplateColumn x:Key="BtnDetJual" Header="Detail Penjualan" MinWidth="80">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                    x:Name="BtnDetailPenjualan"
+                                    Content="Detail Penjualan" Height="23"
+                                    Click="BtnDetailPenjualan_Click"
+                                    FontFamily="Segoe UI Semilight" FontSize="10"
+                                    Foreground="#fff"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Resources>
+                </DataGrid>
+
+                <StackPanel x:Name="NoDataPenjualan" Orientation="Vertical"
+                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Images/Cashback.png" Width="130"/>
+                    <TextBlock Text="Ayo Tambahkan Data Penjualan!"
+                               Foreground="Black" Margin="0 20 0 0"
+                               FontSize="16" FontFamily="Segoe UI Semibold Italic"/>
+                    <TextBlock Text="Sepertinya Anda Belum Melakukan Transaksi Penjualan Apapun"
+                               Foreground="Black" Margin="0 10 0 0" Width="240"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               FontSize="13" FontFamily="Segoe UI Semilight"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="GridTambahPenjualan" Visibility="Visible"
+                  HorizontalAlignment="Right" Width="0"
+                  Background="Transparent">
+
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-80" Opacity="0.31" ShadowDepth="3" />
+                </Grid.Effect>
+
+                <Grid Background="White"
+                      VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <Button x:Name="CloseTambahJual" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}" Width="50"
+                                Height="30" Margin="20 9 0 10"
+                                Click="CloseTambahJual_Click">
+                            <materialDesign:PackIcon
+                                Foreground="Black"
+                                Kind="ArrowBack"
+                                Width="20" Height="20"/>
+                        </Button>
+                        <TextBlock x:Name="txtTitleJual" Text="Tambah Penjualan" 
+                                   Foreground="Black"
+                               VerticalAlignment="Top" FontSize="16"
+                               FontFamily="Segoe UI Semibold" Margin="12"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="40 90 40 40">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon Kind="DateRange"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Tanggal Penjualan" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <DatePicker x:Name="txtBoxTglJual"
+                                    Margin="10 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Width="120"  Foreground="Black"/>
+                            <materialDesign:PackIcon Kind="Person" Margin="50 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Customer / Pelanggan" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxCustomer" Foreground="Black"
+                                  Width="130" Margin="10 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Customer}" materialDesign:HintAssist.Hint="Pilih..."
+                                  VerticalAlignment="Bottom" FontSize="13"
+                                      SelectionChanged="CmbBoxCustomer_SelectionChanged"/>
+                            <Button x:Name="BtnAddCustomer" Background="Transparent"
+                                BorderBrush="Transparent" Margin="10 0 0 0"
+                                Click="BtnAddCustomer_Click">
+                                <materialDesign:PackIcon 
+                                    Kind="AddCircle" Foreground="#C46404"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </StackPanel>
+                        <Rectangle Fill="DarkGray" Height="1" Margin="0 20 0 15"/>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BoxVariant"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Barang" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxNamaBarang" Foreground="Black"
+                                      IsEditable="True" Width="180" Margin="10 0 0 0" 
+                                      HorizontalAlignment="Left" ItemsSource="{Binding NamaStok}" 
+                                      materialDesign:HintAssist.Hint="Pilih..."
+                                      SelectionChanged="CmbBoxNamaBarang_SelectionChanged"
+                                      VerticalAlignment="Bottom" FontSize="13"/>
+                            <materialDesign:PackIcon Kind="Counter" Margin="40 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Jumlah" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <TextBox x:Name="txtBoxJumlahBarang" Foreground="Black"
+                                     Width="70" Margin="10 0 0 0" 
+                                     HorizontalAlignment="Left"
+                                     TextChanged="TxtBoxJumlahBarang_TextChanged"
+                                     materialDesign:HintAssist.Hint="0"
+                                     VerticalAlignment="Bottom" FontSize="13"/>
+                            <materialDesign:PackIcon Kind="PointOfSale" Margin="40 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Harga Satuan" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <TextBlock x:Name="txtHargaSatuan" Foreground="#707070"
+                                       Margin="10 0 0 0" 
+                                      HorizontalAlignment="Left"
+                                       Text="Rp0,00/Kilogram"
+                                     VerticalAlignment="Center" FontSize="13"/>
+                            <materialDesign:PackIcon Kind="Sale" Margin="40 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Diskon" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <TextBox x:Name="txtBoxDiskon" Foreground="Black"
+                                     Width="40" Margin="10 0 0 0" HorizontalAlignment="Left"
+                                     TextAlignment="Center" materialDesign:HintAssist.Hint="0%"
+                                     VerticalAlignment="Bottom" FontSize="13" MaxLength="4"
+                                     TextChanged="TxtBoxDiskon_TextChanged"/>
+                            <materialDesign:PackIcon Kind="CalculatorVariant" Margin="40 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Harga Total" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <TextBlock x:Name="txtHargaTotal" Foreground="#707070"
+                                       Margin="10 0 0 0" 
+                                      HorizontalAlignment="Left"
+                                       Text="Rp0,00"
+                                     VerticalAlignment="Center" FontSize="13"/>
+                            <Button x:Name="BtnAddSaleItem" HorizontalAlignment="Right"
+                                    Click="BtnAddSaleItem_Click" Margin="50 0 0 0"
+                                    Background="#C46404" BorderBrush="#C46404" FontSize="13"
+                                    Content="Tambah Item" FontWeight="Light"
+                                    VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="35 0 0 50"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left">
+                        <TextBlock Text="Total Harga" FontSize="14"
+                                   Foreground="#2f2f2f" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtTotalHargaAll" Text="Rp0,00" FontSize="14" FontWeight="Medium"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="30 0 0 0"/>
+                        <ComboBox x:Name="cmbBoxMetodeBayarJual" ItemsSource="{Binding MetodeJual}"
+                                  Margin="50 0 0 0" materialDesign:HintAssist.Hint="Metode Bayar"
+                                  MinWidth="150"/>
+                        <TextBox x:Name="txtBoxUangTunai" TextChanged="TxtBoxUangTunai_TextChanged"
+                                 Width="150" materialDesign:HintAssist.Hint="Uang Tunai (Rp)"
+                                 Margin="50 0 0 0"/>
+                        <TextBlock Text="Uang Kembali : " Margin="50 0 0 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Rp0,00" Margin="10 0 0 0" VerticalAlignment="Center"
+                                   x:Name="txtUangKembali"/>
+                    </StackPanel>
+                    <Button x:Name="BtnTambahPenjualan2" HorizontalAlignment="Right"
+                            Click="BtnTambahPenjualan2_Click" Margin="50"
+                            Background="#C46404" BorderBrush="#C46404" FontSize="13"
+                            Content="Tambah Penjualan" FontWeight="Light"
+                            VerticalAlignment="Bottom"/>
+                    <DataGrid x:Name="TableTambahPenjualan" AutoGenerateColumns="False"
+                          HeadersVisibility="Column" CanUserResizeRows="False" 
+                          CanUserAddRows="False" GridLinesVisibility="Horizontal" 
+                          Background="White" IsReadOnly="True" Margin="40 220 40 100"
+                          CanUserReorderColumns="False" FontSize="12">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Height" Value="35"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                <Setter Property="Margin" Value="15 0 0 0"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Width" Value="Auto"/>
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                            </Style>
+                        </DataGrid.Resources>
+                    </DataGrid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="GridLaporan" Margin="0 40 0 0"
+              Visibility="Visible">
+            <Grid x:Name="GridMenuLaporan" Height="70"
+                      VerticalAlignment="Top"
+                      Background="#F2CF9D">
+
+                <StackPanel Orientation="Horizontal" Margin="30 0 0 0">
+                    <Button x:Name="BtnTambahBeban" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTambahBeban_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Weights" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tambah Beban" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnTambahTransaksi" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTambahTransaksi_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="145"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Money100" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tambah Transaksi" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <!--<Button x:Name="BtnTampilanTabelPenjualan" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnTampilanTabelPenjualan_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Menu" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Tampilan Tabel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+
+                    <!--<Button x:Name="BtnEksporExcel" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnEksporExcel_Click">
+                        <Grid>
+                            <Border x:Name="recEksporExcel"  
+                                        Background="#C46404" CornerRadius="15"
+                                        Height="30" Width="125"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="FileExcel" Foreground="White"
+                                                             VerticalAlignment="Center"/>
+                                <TextBlock Text="Ekspor Excel" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>-->
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 15 0">
+                    <ComboBox x:Name="cmbBoxBulanLaporan" materialDesign:HintAssist.Hint="Pilih Bulan..."
+                             VerticalAlignment="Center" MinWidth="150" ItemsSource="{Binding Bulan}"/>
+                    <Button x:Name="BtnTampilkanLaporan" 
+                            VerticalAlignment="Center" Height="40"
+                            BorderBrush="Transparent" Background="Transparent"
+                            Click="BtnTampilkanLaporan_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="200"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="DriveDocument" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Tampilkan Laporan Laba Rugi" Foreground="White"
+                                           FontSize="11" FontWeight="Regular" 
+                                           Margin="5 -1 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Margin="20,90,20,20">
+                <FlowDocumentScrollViewer x:Name="fdViewer" Visibility="Collapsed" Margin="20"/>
+
+                <StackPanel x:Name="NoDataLaporanSelected" Orientation="Vertical"
+                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Images/Compare.png" Width="130"/>
+                    <TextBlock Text="Laporan Belum Dipilih!" TextAlignment="Center"
+                               Foreground="Black" Margin="0 20 0 0"
+                               FontSize="16" FontFamily="Segoe UI Semibold Italic"/>
+                    <TextBlock Text="Untuk menampilkan laporan, Pilih Parameter Laporan Laba Rugi"
+                               Foreground="Black" Margin="0 10 0 0" Width="240"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               FontSize="13" FontFamily="Segoe UI Semilight"/>
+                </StackPanel>
+            </Grid>
+
+            <!--<ProgressBar x:Name="progressLaporan" IsIndeterminate="True" 
+                             VerticalAlignment="Top" Height="8" Margin="0,70,0,0" Visibility="Collapsed"/>-->
+            
+            <Grid x:Name="GridTambahBebTrak" Visibility="Visible"
+                  HorizontalAlignment="Right" Width="0"
+                  Background="Transparent">
+
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-80" Opacity="0.31" ShadowDepth="3" />
+                </Grid.Effect>
+
+                <Grid Background="White"
+                      VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <Button x:Name="CloseTambahBebTrak" 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}" Width="50"
+                                Height="30" Margin="20 9 0 10"
+                                Click="CloseTambahBebTrak_Click">
+                            <materialDesign:PackIcon
+                                Foreground="Black"
+                                Kind="ArrowBack"
+                                Width="20" Height="20"/>
+                        </Button>
+                        <TextBlock x:Name="txtTitleBebTrak" Text="Tambah Beban" 
+                                   Foreground="Black"
+                               VerticalAlignment="Top" FontSize="16"
+                               FontFamily="Segoe UI Semibold" Margin="12"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="panelBeban" Orientation="Vertical" Margin="40 90 40 40" Visibility="Visible">
+                        <Grid HorizontalAlignment="Left">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Tanggal" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <DatePicker x:Name="txtBoxTglBeban"
+                                    Margin="170 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Width="130"  Foreground="Black"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Deskripsi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxKetBeban" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" 
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Jenis Beban" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxJenisBeban" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding JenisBeban}" 
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Nilai (Rp)" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxNilaiBeban" Foreground="Black"
+                                  Width="150" Margin="170 0 0 0" 
+                                     TextChanged="TxtBoxNilaiBeban_TextChanged"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Jumlah Beban" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="TxtBoxJumlahBeban" Foreground="Black"
+                                  Width="50" Margin="170 0 0 0" 
+                                     TextChanged="TxtBoxJumlahBeban_TextChanged"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Total Rugi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBlock x:Name="TxtTotalBeban" Foreground="#2f2f2f"
+                                  Width="130" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13" Text="Rp0,00"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel x:Name="panelTransaksi" Orientation="Vertical" Margin="40 90 40 40" Visibility="Collapsed">
+                        <Grid HorizontalAlignment="Left">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Tanggal" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <DatePicker x:Name="txtBoxTglTransaksi"
+                                    Margin="170 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Width="130"  Foreground="Black"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Deskripsi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <TextBox x:Name="txtBoxKetTransaksi" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" 
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Jenis Transaksi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxJenisTransaksi" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding FieldTotal}" 
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09" Grid.ColumnSpan="2"/>
+                            <TextBlock Text="Nilai (Rp)" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15,11,0,11" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="txtBoxNilaiTransaksi" Foreground="Black"
+                                  Width="150" Margin="170 0 0 0" 
+                                     TextChanged="TxtBoxNilaiTransaksi_TextChanged"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom" FontSize="13" Grid.Column="1"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="150" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Metode Transaksi" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxMetodeTransaksi" Foreground="Black"
+                                  Width="180" Margin="170 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Metode}" materialDesign:HintAssist.Hint="Opsional"
+                                  VerticalAlignment="Bottom" FontSize="13"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <Button x:Name="BtnTambahBeban2" HorizontalAlignment="Right"
+                            Click="BtnTambahBeban2_Click" Margin="50"
+                            Background="#C46404" BorderBrush="#C46404" FontSize="13"
+                            Content="Tambah Beban" FontWeight="Light"
+                            VerticalAlignment="Bottom"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
