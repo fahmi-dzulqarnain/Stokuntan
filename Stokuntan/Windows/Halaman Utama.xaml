@@ -574,8 +574,26 @@
                                  Width="210" Margin="140 0 0 0"
                                  VerticalAlignment="Bottom" FontSize="13"/>
                         </Grid>
+                        <Grid HorizontalAlignment="Left" Margin="0 -2 0 0">
+                            <Rectangle Width="120" Height="40"
+                                   HorizontalAlignment="Left"
+                                   Fill="#FDE7C8" Stroke="#642B09"/>
+                            <TextBlock Text="Lokasi Stok" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="15 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxLokasi" Foreground="Black"
+                                 Width="150" Margin="140 0 0 0" ItemsSource="{Binding Lokasi}"
+                                 VerticalAlignment="Bottom" FontSize="13" HorizontalAlignment="Left"/>
+                            <Button x:Name="BtnAddLocation" Background="Transparent"
+                                BorderBrush="Transparent" Margin="300 10 0 0"
+                                Click="BtnAddLocation_Click">
+                                <materialDesign:PackIcon 
+                                    Kind="AddCircle" Foreground="#C46404"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
                         <Button x:Name="btnTambahPembelian2" HorizontalAlignment="Right"
-                                Click="BtnTambahPembelian2_Click" Margin="0 50 0 0"
+                                Click="BtnTambahPembelian2_Click" Margin="0 35 0 0"
                                 Background="#C46404" BorderBrush="#C46404"
                                 Content="Tambah Pembelian" FontWeight="Light"/>
                     </StackPanel>
@@ -624,6 +642,25 @@
                                 <materialDesign:PackIcon Kind="Menu" Foreground="White"
                                                              VerticalAlignment="Center"/>
                                 <TextBlock Text="Daftar Barang Reject" Foreground="White"
+                                               FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnAlihkanStok" Margin="-15 0 0 0" 
+                                VerticalAlignment="Center" Height="40"
+                                BorderBrush="Transparent" Background="Transparent"
+                                Click="BtnAlihkanStok_Click">
+                        <Grid>
+                            <Border Background="#C46404" CornerRadius="15"
+                                    Height="30" Width="170"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Sync" Foreground="White"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Pindahkan Lokasi Stok" Foreground="White"
                                                FontSize="11" FontWeight="Regular" Margin="5 -1 0 0"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center"/>
@@ -834,7 +871,7 @@
         </Grid>
 
         <Grid x:Name="GridPenjualan" Margin="0 40 0 0"
-              Visibility="Collapsed">
+              Visibility="Visible">
             <Grid x:Name="GridMenuPenjualan" Height="70"
                       VerticalAlignment="Top"
                       Background="#F2CF9D">
@@ -1014,7 +1051,7 @@
             </Grid>
 
             <Grid x:Name="GridTambahPenjualan" Visibility="Visible"
-                  HorizontalAlignment="Right" Width="0"
+                  HorizontalAlignment="Right" Width="1280"
                   Background="Transparent">
 
                 <Grid.Effect>
@@ -1070,6 +1107,16 @@
                                     Kind="AddCircle" Foreground="#C46404"
                                     Width="20" Height="20"/>
                             </Button>
+                            <materialDesign:PackIcon Kind="Location" Margin="50 0 0 0"
+                                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Lokasi Stok" FontSize="13"
+                                   Foreground="Black" VerticalAlignment="Center"
+                                   Margin="5 0 0 0"/>
+                            <ComboBox x:Name="cmbBoxLokasiJual" Foreground="Black"
+                                  Width="130" Margin="10 0 0 0" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding Lokasi}" materialDesign:HintAssist.Hint="Pilih..."
+                                  VerticalAlignment="Bottom" FontSize="13"
+                                      SelectionChanged="CmbBoxCustomer_SelectionChanged"/>
                         </StackPanel>
                         <Rectangle Fill="DarkGray" Height="1" Margin="0 20 0 15"/>
                         <StackPanel Orientation="Horizontal">
@@ -1162,7 +1209,7 @@
                           CanUserReorderColumns="False" FontSize="12">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
-                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Height" Value="40"/>
                             </Style>
                         </DataGrid.RowStyle>
 
@@ -1172,11 +1219,24 @@
                                 <Setter Property="Margin" Value="15 0 0 0"/>
                                 <Setter Property="Background" Value="Transparent"/>
                                 <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Height" Value="40"/>
                                 <Setter Property="Width" Value="Auto"/>
                                 <Setter Property="FontSize" Value="12"/>
                                 <Setter Property="FontWeight" Value="SemiBold"/>
                             </Style>
+
+                            <DataGridTemplateColumn x:Key="BtnHapusJual" Header="" MinWidth="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                    x:Name="BtnHapusItemJual"
+                                    Content="Hapus" Height="23"
+                                    Click="BtnHapusItemJual_Click"
+                                    FontFamily="Segoe UI Semilight" FontSize="9"
+                                    Foreground="#fff"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Resources>
                     </DataGrid>
                 </Grid>
@@ -1185,7 +1245,7 @@
         </Grid>
 
         <Grid x:Name="GridLaporan" Margin="0 40 0 0"
-              Visibility="Visible">
+              Visibility="Collapsed">
             <Grid x:Name="GridMenuLaporan" Height="70"
                       VerticalAlignment="Top"
                       Background="#F2CF9D">

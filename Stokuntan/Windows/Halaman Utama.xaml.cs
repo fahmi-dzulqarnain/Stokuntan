@@ -67,7 +67,8 @@ namespace Stokuntan.Windows
                 new DataGridAttr() { HEADER = "Total Stok", BINDING = "TOTAL_STOK", WIDTH = 120 },
                 new DataGridAttr() { HEADER = "Satuan", BINDING = "SATUAN_STOK", WIDTH = 120 },
                 new DataGridAttr() { HEADER = "Stok Dlm Gram", BINDING = "STOK_DLM_GRAM", WIDTH = 160 },
-                new DataGridAttr() { HEADER = "Harga Jual", BINDING = "HARGA_JUAL_PER", WIDTH = 200 }
+                new DataGridAttr() { HEADER = "Harga Jual", BINDING = "HARGA_JUAL_PER", WIDTH = 200 },
+                new DataGridAttr() { HEADER = "Lokasi", BINDING = "LOKASI", WIDTH = 210 }
             };
             DataGridAttrsJual = new List<DataGridAttr>
             {
@@ -130,7 +131,7 @@ namespace Stokuntan.Windows
 
             var stokColumns = new List<string>() { "NO", "ID_STOK", "TGL_MASUK", "NAMA_KATEGORI", "DESKRIPSI", "MEREK", "JUMLAH_STOK", "SATUAN",
                 "DALAM_GRAM", "NO_NOTA_REF", "HARGA_BELI", "HARGA_JUAL", "METODE_BAYAR", "NAMA_SUPPLIER", "SATUAN_JUAL" };
-            var realColumns = new List<string>() { "NO", "ID_STOK_END", "KATEGORI_MEREK", "TOTAL_STOK", "SATUAN_STOK", "STOK_DLM_GRAM", "HARGA_JUAL_PER" };
+            var realColumns = new List<string>() { "NO", "ID_STOK_END", "KATEGORI_MEREK", "TOTAL_STOK", "SATUAN_STOK", "STOK_DLM_GRAM", "HARGA_JUAL_PER", "LOKASI" };
             var jualColumns = new List<string>() { "NO", "ID_JUAL", "TANGGAL_JUAL", "CUSTOMER", "TOTAL_PENJUALAN" };
             var tableStok = new DataTable();
             var tableRealStok = new DataTable();
@@ -142,6 +143,8 @@ namespace Stokuntan.Windows
             TableStok.Columns.Add(buttonColumn);
             var buttonDetJual = (DataGridTemplateColumn)TablePenjualan.Resources["BtnDetJual"];
             TablePenjualan.Columns.Add(buttonDetJual);
+            var buttonHapusJual = (DataGridTemplateColumn)TableTambahPenjualan.Resources["BtnHapusJual"];
+            TableTambahPenjualan.Columns.Add(buttonHapusJual);
 
             int i = 1;
             foreach (var value in DataStok)
@@ -181,6 +184,7 @@ namespace Stokuntan.Windows
                 row["SATUAN_STOK"] = value.SATUAN_STOK;
                 row["STOK_DLM_GRAM"] = string.Format(culture, "{0:N0}", value.STOK_DLM_GRAM);
                 row["HARGA_JUAL_PER"] = $"{string.Format(culture, "{0:N0}", int.Parse(hrgJual[0]))}/{hrgJual[1]}";
+                row["LOKASI"] = value.LOKASI;
                 tableRealStok.Rows.Add(row);
             }
             i = 1;
@@ -510,7 +514,7 @@ namespace Stokuntan.Windows
             var closePanel = (Storyboard)Resources["TambahClose"];
             if (!int.TryParse(txtBoxJumlahStok.Text, out int jumlah)) MessageBox.Show("Jumlah Stok harus berupa angka!", "Mohon Diperhatikan!", MessageBoxButton.OK, MessageBoxImage.Error);
             else
-            if (cmbBoxKategori.SelectedItem != null && txtBoxTglMasuk.Text != "" &&
+            if (cmbBoxKategori.SelectedItem != null && txtBoxTglMasuk.Text != "" && cmbBoxLokasi.SelectedItem != null &&
                 txtBoxMerek.Text != "" && txtBoxJumlahStok.Text != "" && cmbBoxSatuan.SelectedItem != null &&
                 txtBoxHargaBeli.Text != "" && txtBoxHargaJual.Text != "" && cmbBoxSupplier.SelectedItem != null)
             {
@@ -524,6 +528,7 @@ namespace Stokuntan.Windows
                 var jmlhStok = int.Parse(txtBoxJumlahStok.Text); var satuanStok = cmbBoxSatuan.SelectedItem.ToString();
                 var satuanJual = cmbBoxSatuanJual.SelectedItem.ToString();
                 var metode = cmbBoxMetodeBayar.SelectedItem.ToString();
+                var lokasi = cmbBoxLokasi.SelectedItem.ToString();
                 if (txtBoxRefNota.Text != "") no_nota = txtBoxRefNota.Text;
                 if (txtBoxDeskripsi.Text != "") deskripsi = txtBoxDeskripsi.Text;
 
@@ -552,11 +557,16 @@ namespace Stokuntan.Windows
                     {
                         db.Insert(new TabelRealStok()
                         {
-                            ID_STOK_END = idStok, KATEGORI_MEREK = deskripsi,
-                            TOTAL_STOK = jmlhStok, SATUAN_STOK = satuanStok,
-                            STOK_DLM_GRAM = stokGram, HARGA_JUAL_PER = $"{hargaJual}/{satuanJual}"
+                            ID_STOK_END = idStok,
+                            KATEGORI_MEREK = deskripsi,
+                            TOTAL_STOK = jmlhStok,
+                            SATUAN_STOK = satuanStok,
+                            LOKASI = lokasi,
+                            STOK_DLM_GRAM = stokGram,
+                            HARGA_JUAL_PER = $"{hargaJual}/{satuanJual}"
                         });
-                    } else
+                    }
+                    else
                     {
                         isAvailable.TOTAL_STOK += jmlhStok;
                         isAvailable.STOK_DLM_GRAM += stokGram;
@@ -578,6 +588,8 @@ namespace Stokuntan.Windows
                 else
                 {
                     var table = db.Get<TabelStok>(item[1]);
+                    var jmlhStokUpdate = table.JUMLAH_STOK;
+                    var jmlhKasUpdate = table.HARGA_BELI;
                     hargaBeli = int.Parse(txtBoxHargaBeli.Text.Replace(".", ""), NumberStyles.AllowCurrencySymbol);
                     hargaJual = int.Parse(txtBoxHargaJual.Text.Replace(".", ""), NumberStyles.AllowCurrencySymbol);
                     table.DESKRIPSI = deskripsi;
@@ -591,7 +603,7 @@ namespace Stokuntan.Windows
                     table.SATUAN = satuanStok;
                     table.METODE_BAYAR = cmbBoxMetodeBayar.SelectedItem.ToString();
                     table.ID_SUPPLIER = supplier.ID_SUPPLIER;
-                    table.NO_NOTA_REF = no_nota;
+                    table.NO_NOTA_REF = no_nota;  
                     db.RunInTransaction(() => db.Update(table));
 
                     var isAvailable = db.Query<TabelRealStok>("SELECT * FROM TabelRealStok WHERE KATEGORI_MEREK = ? AND SATUAN_STOK = ?", deskripsi, satuanStok);
@@ -605,6 +617,7 @@ namespace Stokuntan.Windows
                             TOTAL_STOK = jmlhStok,
                             SATUAN_STOK = satuanStok,
                             STOK_DLM_GRAM = stokGram,
+                            LOKASI = lokasi,
                             HARGA_JUAL_PER = $"{hargaJual}/{satuanJual}"
                         });
                     }
@@ -612,8 +625,8 @@ namespace Stokuntan.Windows
                     {
                         var updated = isAvailable.FirstOrDefault();
                         updated.ID_STOK_END = updated.ID_STOK_END;
-                        updated.TOTAL_STOK -= table.JUMLAH_STOK;
-                        updated.STOK_DLM_GRAM -= stokGram * table.JUMLAH_STOK;
+                        updated.TOTAL_STOK -= jmlhStokUpdate;
+                        updated.STOK_DLM_GRAM -= stokGram * jmlhStokUpdate;
                         updated.TOTAL_STOK += jmlhStok;
                         updated.STOK_DLM_GRAM += stokGram * jmlhStok;
                         updated.HARGA_JUAL_PER = $"{hargaJual}/{satuanJual}";
@@ -623,12 +636,12 @@ namespace Stokuntan.Windows
                     if (metode.Contains("Cash"))
                     {
                         var kas = db.Query<TabelTotal>("SELECT * FROM TabelTotal WHERE NAMA_FIELD = 'Kas'").First();
-                        db.RunInTransaction(() => { kas.TOTAL += table.HARGA_BELI; kas.TOTAL -= hargaBeli; db.Update(kas); });
+                        db.RunInTransaction(() => { kas.TOTAL += jmlhKasUpdate; kas.TOTAL -= hargaBeli; db.Update(kas); });
                     }
                     else if (metode.Contains("Utang"))
                     {
                         var utang = db.Query<TabelTotal>("SELECT * FROM TabelTotal WHERE NAMA_FIELD = 'Utang'").First();
-                        db.RunInTransaction(() => { utang.TOTAL -= table.HARGA_BELI; utang.TOTAL += hargaBeli; db.Update(utang); });
+                        db.RunInTransaction(() => { utang.TOTAL -= jmlhKasUpdate; utang.TOTAL += hargaBeli; db.Update(utang); });
                     }
                 }
 
@@ -636,6 +649,7 @@ namespace Stokuntan.Windows
                 BacaDatabase();
                 closePanel.Begin(GridTambahPembelian);
             }
+            else MessageBox.Show("Ada Kolom yang belum diisi, Mohon Diisi terlebih dahulu", "Mohon Diperhatikan!");
         }
 
         private void ResetTambahPembelian()
@@ -652,6 +666,19 @@ namespace Stokuntan.Windows
             cmbBoxSatuan.SelectedItem = null;
             cmbBoxSatuanJual.SelectedItem = null;
             cmbBoxSupplier.SelectedItem = null;
+        }
+
+        private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new Tambah_Lokasi();
+            window.ShowDialog();
+
+            if (window.DialogResult == true)
+            {
+                DataContext = new Classes.ComboBoxItem();
+                cmbBoxLokasi.SelectedItem = window.txtBoxNamaLokasi.Text;
+                window.Close();
+            }
         }
 
         private void BtnAddKategori_Click(object sender, RoutedEventArgs e)
@@ -782,6 +809,13 @@ namespace Stokuntan.Windows
             else MessageBox.Show("Field nama stok, harga jual, tanggal reject, atau stok reject tidak boleh kosong", "Mohon Diperhatikan!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        private void BtnAlihkanStok_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new Alihkan_Stok();
+            window.ShowDialog();
+            if (window.DialogResult == true) BacaDatabase();
+        }
+
         private void CmbBoxNamaStok_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbBoxNamaStok.SelectedItem != null)
@@ -885,7 +919,7 @@ namespace Stokuntan.Windows
 
         private void BtnTambahPenjualan2_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbBoxCustomer.SelectedItem != null && txtBoxTglJual.Text != "")
+            if (cmbBoxCustomer.SelectedItem != null && txtBoxTglJual.Text != "" && cmbBoxLokasiJual.SelectedItem != null)
             {
                 if (Penjualans.Count != 0)
                 {
@@ -894,6 +928,7 @@ namespace Stokuntan.Windows
                     var getJual = db.Query<TabelPenjualan>("SELECT * FROM TabelPenjualan");
                     var metode = "Cash / Bank";
                     var totalJual = txtTotalHargaAll.Text;
+                    var lokasi = cmbBoxLokasiJual.SelectedItem.ToString();
                     if (cmbBoxMetodeBayarJual.SelectedItem != null) metode = cmbBoxMetodeBayarJual.SelectedItem.ToString();
                     var id = 1;
                     if (getJual.Count != 0) id = getJual.Max(x => x.ID_JUAL) + 1;
@@ -904,7 +939,7 @@ namespace Stokuntan.Windows
                     }
                     foreach (var value in jualItemTemp)
                     {
-                        var getStok = db.Query<TabelRealStok>("SELECT * FROM TabelRealStok WHERE KATEGORI_MEREK = ?", value.NAMA_BARANG).FirstOrDefault();
+                        var getStok = db.Query<TabelRealStok>("SELECT * FROM TabelRealStok WHERE KATEGORI_MEREK = ? AND LOKASI = ?", value.NAMA_BARANG, lokasi).FirstOrDefault();
                         getStok.TOTAL_STOK = value.JUMLAH_STOK;
                         getStok.STOK_DLM_GRAM = value.STOK_DLM_GRAM;
                         db.RunInTransaction(() => db.Update(getStok));
@@ -929,7 +964,7 @@ namespace Stokuntan.Windows
                 }
                 else MessageBox.Show("Tambahkan Item Dibeli Terlebih Dahulu Sebelum Menambahkan Penjualan", "Mohon Diperhatikan", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else MessageBox.Show("Anda harus Memilih Customer dan Tanggal Jual Untuk Melanjutkan", "Mohon Diperhatikan", MessageBoxButton.OK, MessageBoxImage.Information);
+            else MessageBox.Show("Anda harus Memilih Customer, Tanggal Jual, dan Lokasi Stok Untuk Melanjutkan", "Mohon Diperhatikan", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void BtnAddSaleItem_Click(object sender, RoutedEventArgs e)
@@ -1092,6 +1127,16 @@ namespace Stokuntan.Windows
                 }
                 catch (Exception) { MessageBox.Show("Uang Tunai harus berupa angka dan Tidak Boleh melebihi 5 M!", "Mohon Diperhatikan!", MessageBoxButton.OK, MessageBoxImage.Error); }
             }
+        }
+
+        private void BtnHapusItemJual_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = (DetailPenjualan)TableTambahPenjualan.SelectedItem;
+            Penjualans.Remove(selected);
+            var harSem = int.Parse(txtTotalHargaAll.Text.Replace(".", "").Replace("Rp", ""));
+            txtTotalHargaAll.Text = string.Format(culture, "{0:C0}", harSem - int.Parse(selected.HARGA_TOTAL.Replace(".", "").Replace("Rp", "")));
+            TableTambahPenjualan.ItemsSource = null;
+            TableTambahPenjualan.ItemsSource = Penjualans;
         }
 
         #endregion
@@ -1279,11 +1324,17 @@ namespace Stokuntan.Windows
         {
             if (cmbBoxBulanLaporan.SelectedItem != null)
             {
-                var bulan = GetIndexOfBulan(cmbBoxBulanLaporan.SelectedItem.ToString());
-                var laporan = GenerateLaporanLabaRugi(bulan, cmbBoxBulanLaporan.SelectedItem.ToString(), 13);
-                fdViewer.Document = laporan;
-                fdViewer.Visibility = Visibility.Visible;
-                NoDataLaporanSelected.Visibility = Visibility.Collapsed;
+                var window = new Authentication_Windows();
+                window.ShowDialog();
+
+                if (window.DialogResult == true) 
+                {
+                    var bulan = GetIndexOfBulan(cmbBoxBulanLaporan.SelectedItem.ToString());
+                    var laporan = GenerateLaporanLabaRugi(bulan, cmbBoxBulanLaporan.SelectedItem.ToString(), 13);
+                    fdViewer.Document = laporan;
+                    fdViewer.Visibility = Visibility.Visible;
+                    NoDataLaporanSelected.Visibility = Visibility.Collapsed;
+                }
             }
             else MessageBox.Show("Pilih Bulan Untuk Menampilkan Laporan", "Mohon Diperhatikan!", MessageBoxButton.OK, MessageBoxImage.Information);
         }

@@ -129,6 +129,7 @@
     <Compile Include="DatabaseModel\TabelBeban.cs" />
     <Compile Include="DatabaseModel\TabelCustomer.cs" />
     <Compile Include="DatabaseModel\TabelKategori.cs" />
+    <Compile Include="DatabaseModel\TabelLokasi.cs" />
     <Compile Include="DatabaseModel\TabelPenjualan.cs" />
     <Compile Include="DatabaseModel\TabelRealStok.cs" />
     <Compile Include="DatabaseModel\TabelReject.cs" />
@@ -142,11 +143,20 @@
     <Compile Include="ProgressDialog\ProgressDialogContext.cs" />
     <Compile Include="ProgressDialog\ProgressDialogResult.cs" />
     <Compile Include="ProgressDialog\ProgressDialogSettings.cs" />
+    <Compile Include="Windows\Alihkan Stok.xaml.cs">
+      <DependentUpon>Alihkan Stok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Authentication Windows.xaml.cs">
+      <DependentUpon>Authentication Windows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Halaman Utama.xaml.cs">
       <DependentUpon>Halaman Utama.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tambah Customer.xaml.cs">
       <DependentUpon>Tambah Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Tambah Lokasi.xaml.cs">
+      <DependentUpon>Tambah Lokasi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tambah Satuan.xaml.cs">
       <DependentUpon>Tambah Satuan.xaml</DependentUpon>
@@ -185,11 +195,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Alihkan Stok.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Authentication Windows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Halaman Utama.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Tambah Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Tambah Lokasi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

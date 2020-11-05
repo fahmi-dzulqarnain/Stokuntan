@@ -4,10 +4,11 @@ namespace Stokuntan.DatabaseModel
 {
     public class IDatabase
     {
-        public static SQLiteConnection conns = new SQLiteConnection(App.lokasiDatabase);
+        static string lokasiDatabase = "";
+        public static SQLiteConnection conns = new SQLiteConnection(lokasiDatabase);//new SQLiteConnection(App.lokasiDatabase);
         public IDatabase() 
         {
-            CreateTables();
+            CreateTables();            
         }
 
         public SQLiteConnection Conn() { return conns; }
@@ -25,6 +26,7 @@ namespace Stokuntan.DatabaseModel
             conns.CreateTable<TabelPenjualan>();
             conns.CreateTable<TabelBeban>();
             conns.CreateTable<TabelTransaksi>();
+            conns.CreateTable<TabelLokasi>();
             conns.CreateTable<TabelTotal>();
         }
 
@@ -34,13 +36,31 @@ namespace Stokuntan.DatabaseModel
             var satuan = Conn().Query<TabelSatuan>("SELECT * FROM TabelSatuan").Count;
             var trans = Conn().Query<TabelTotal>("SELECT * FROM TabelTotal").Count;
             var customer = Conn().Query<TabelCustomer>("SELECT * FROM TabelCustomer").Count;
+            var lokasi = Conn().Query<TabelLokasi>("SELECT * FROM TabelLokasi").Count;
 
-            if (akun == 0) Conn().Insert(new TabelAkun 
-            { 
-                ID_AKUN = 1, USERNAME = "admin@minnaagency", KATA_SANDI = "admin", 
-                ALAMAT = "Komp. Genta 1 Blok U No. 5 Depan Masjid Darussalam Batu Aji Batam", 
-                JENIS_AKUN = "ADMIN", NAMA_TOKO = "CV. Minna Agency Batam", KONTAK = "0821-7310-4567 / 0821-7111-2121" 
-            });
+            if (akun == 0)
+            {
+                Conn().Insert(new TabelAkun
+                {
+                    ID_AKUN = 1,
+                    USERNAME = "admin@minnaagency",
+                    KATA_SANDI = "AdminMinna",
+                    ALAMAT = "Komp. Genta 1 Blok U No. 5 Depan Masjid Darussalam Batu Aji Batam",
+                    JENIS_AKUN = "ADMIN",
+                    NAMA_TOKO = "CV. Minna Agency Batam",
+                    KONTAK = "0821-7310-4567 / 0821-7111-2121"
+                });
+                Conn().Insert(new TabelAkun
+                {
+                    ID_AKUN = 2,
+                    USERNAME = "employee@minnaagency",
+                    KATA_SANDI = "employee20",
+                    ALAMAT = "Komp. Genta 1 Blok U No. 5 Depan Masjid Darussalam Batu Aji Batam",
+                    JENIS_AKUN = "CABANG",
+                    NAMA_TOKO = "CV. Minna Agency Batam",
+                    KONTAK = "0821-7310-4567 / 0821-7111-2121"
+                });
+            }
             if (satuan == 0) { 
                 Conn().Insert(new TabelSatuan { NAMA_SATUAN = "Kilogram", DALAM_GRAM = 1000 });
                 Conn().Insert(new TabelSatuan { NAMA_SATUAN = "Ons", DALAM_GRAM = 100 });
@@ -55,6 +75,12 @@ namespace Stokuntan.DatabaseModel
                 Conn().Insert(new TabelTotal() { NAMA_FIELD = "Ekuitas", TOTAL = 0 });
             }
             if (customer == 0) Conn().Insert(new TabelCustomer() { ID_CUSTOMER = 1, NAMA_CUSTOMER = "Customer Umum", ALAMAT_CUSTOMER = "", DISKON_TETAP = 0, KONTAK_CUSTOMER = "" });
+            if (lokasi == 0) 
+            {
+                conns.Insert(new TabelLokasi() { ID_LOKASI = 1, NAMA_LOKASI = "Gudang" });
+                conns.Insert(new TabelLokasi() { ID_LOKASI = 2, NAMA_LOKASI = "Pusat" });
+                conns.Insert(new TabelLokasi() { ID_LOKASI = 3, NAMA_LOKASI = "Cabang" });
+            }
         }
     }
 }

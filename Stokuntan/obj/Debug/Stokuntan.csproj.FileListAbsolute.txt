@@ -75,3 +75,9 @@ F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.csproj.C
 F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.csproj.CopyComplete
 F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.exe
 F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Stokuntan.pdb
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Authentication Windows.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Authentication Windows.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Lokasi.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Tambah Lokasi.g.cs
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Alihkan Stok.baml
+F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\obj\Debug\Windows\Alihkan Stok.g.cs

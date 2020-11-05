@@ -24,6 +24,7 @@ namespace Stokuntan.Classes
         public List<string> FieldTotal { get; set; }
         public List<string> SubOrAdd { get; set; }
         public List<string> Bulan { get; set; }
+        public List<string> Lokasi { get; set; }
         public double ScreenWidth { get; set; }
 
         public ComboBoxItem() 
@@ -33,6 +34,7 @@ namespace Stokuntan.Classes
             Satuan = new List<string>();
             NamaStok = new List<string>();
             Customer = new List<string>();
+            Lokasi = new List<string>();
             SebabReject = new List<string>() { "Busuk", "Hilang", "Rusak", "Lain Lain" };
             KategoriCari = new List<string>() { "Tanggal Masuk", "Kategori", "Supplier", "Merek", "Deskripsi" };
             KategoriJual = new List<string>() { "Tanggal Transaksi", "Customer" };
@@ -48,17 +50,19 @@ namespace Stokuntan.Classes
         private void BacaDatabase() 
         {
             var db = new IDatabase().Conn();
-            var getKategori = db.Query<TabelKategori>("SELECT NAMA_KATEGORI FROM TabelKategori");
-            var getSatuan = db.Query<TabelSatuan>("SELECT NAMA_SATUAN FROM TabelSatuan");
-            var getSupplier = db.Query<TabelSupplier>("SELECT NAMA_SUPPLIER FROM TabelSupplier");
-            var getNamaStok = db.Query<TabelRealStok>("SELECT KATEGORI_MEREK FROM TabelRealStok");
-            var getCustomer = db.Query<TabelCustomer>("SELECT NAMA_CUSTOMER FROM TabelCustomer");
+            var getKategori = db.Query<TabelKategori>("SELECT DISTINCT NAMA_KATEGORI FROM TabelKategori");
+            var getSatuan = db.Query<TabelSatuan>("SELECT DISTINCT NAMA_SATUAN FROM TabelSatuan");
+            var getSupplier = db.Query<TabelSupplier>("SELECT DISTINCT NAMA_SUPPLIER FROM TabelSupplier");
+            var getNamaStok = db.Query<TabelRealStok>("SELECT DISTINCT KATEGORI_MEREK FROM TabelRealStok");
+            var getCustomer = db.Query<TabelCustomer>("SELECT DISTINCT NAMA_CUSTOMER FROM TabelCustomer");
+            var getLokasi = db.Query<TabelLokasi>("SELECT DISTINCT NAMA_LOKASI FROM TabelLokasi");
 
             if (getKategori.Count != 0) Kategori = getKategori.ConvertAll(x => Convert.ToString(x));
             if (getSatuan.Count != 0) Satuan = getSatuan.ConvertAll(x => x.ToString());
             if (getSupplier.Count != 0) Supplier = getSupplier.ConvertAll(x => x.ToString());
             if (getNamaStok.Count != 0) NamaStok = getNamaStok.ConvertAll(x => x.ToString());
             if (getCustomer.Count != 0) Customer = getCustomer.ConvertAll(x => x.ToString());
+            if (getLokasi.Count != 0) Lokasi = getLokasi.ConvertAll(x => x.ToString());
         }
     }
 }

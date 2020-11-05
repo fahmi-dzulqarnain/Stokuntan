@@ -225,6 +225,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_61C258BCBC7D4C4F9A1572C75C15F179"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_62C003DE0E1BED8DFE14C9421BFE4CF7"
         "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
         "MsmSig" = "8:_UNDEFINED"
@@ -329,12 +335,6 @@
         {
         "MsmKey" = "8:_7C50B5BD5DEF9B17927513EA8BD0F203"
         "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7ECEAB9F55AA4370AE7AC84E2588FEFE"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -790,12 +790,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D5404525F325AB63DFF91FA5F18E55CB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1207,6 +1201,12 @@
         "OwnerKey" = "8:_BE67D80EBF6EA623232321163B405506"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D5404525F325AB63DFF91FA5F18E55CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -1225,6 +1225,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -1241,6 +1249,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -1899,6 +1915,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61C258BCBC7D4C4F9A1572C75C15F179"
+            {
+            "SourcePath" = "8:F:\\My Jobs\\Pak Fauzi\\minna_agency_icon.ico"
+            "TargetName" = "8:minna_agency_icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_F6386CE0A0414742BED2E702E8ECFC48"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_62C003DE0E1BED8DFE14C9421BFE4CF7"
             {
             "AssemblyRegister" = "3:1"
@@ -2247,26 +2283,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7ECEAB9F55AA4370AE7AC84E2588FEFE"
-            {
-            "SourcePath" = "8:F:\\minna_agency_icon.ico"
-            "TargetName" = "8:minna_agency_icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_F6386CE0A0414742BED2E702E8ECFC48"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_805B15ED7E102874551EF3448EB16A30"
@@ -3854,7 +3870,7 @@
             "Target" = "8:_786E4D9542C44DBAB5F8570390F6967B"
             "Folder" = "8:_208469A2C8FD4BFDB6E4D795A496362A"
             "WorkingFolder" = "8:_F6386CE0A0414742BED2E702E8ECFC48"
-            "Icon" = "8:_7ECEAB9F55AA4370AE7AC84E2588FEFE"
+            "Icon" = "8:_61C258BCBC7D4C4F9A1572C75C15F179"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FAA8554F0C644C7B9DF3947645BF0DA8"
@@ -3868,7 +3884,7 @@
             "Target" = "8:_786E4D9542C44DBAB5F8570390F6967B"
             "Folder" = "8:_7C639FB5377D4B55AB6F2EA6EF17363A"
             "WorkingFolder" = "8:_F6386CE0A0414742BED2E702E8ECFC48"
-            "Icon" = "8:_7ECEAB9F55AA4370AE7AC84E2588FEFE"
+            "Icon" = "8:_61C258BCBC7D4C4F9A1572C75C15F179"
             "Feature" = "8:"
             }
         }

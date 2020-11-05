@@ -11,9 +11,10 @@ namespace Stokuntan.DatabaseModel
         public string SATUAN_STOK { get; set; }
         public int STOK_DLM_GRAM { get; set; }
         public string HARGA_JUAL_PER { get; set; } // Dalam Satuan Ons atau Kg | Cth. 100.000/Ons
+        public string LOKASI { get; set; }
         public override string ToString()
         {
-            return $"{KATEGORI_MEREK}{SATUAN_STOK}{HARGA_JUAL_PER}";
+            return $"{KATEGORI_MEREK}{SATUAN_STOK}{HARGA_JUAL_PER}{LOKASI}";
         }
     }
 }

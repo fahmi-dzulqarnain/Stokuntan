@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\EFSOFT\9. Aplikasi Stokuntan\Stokuntan\Stokuntan\App.xaml
-1159898380
+14-1199627563
 2788301757
-371539146708
+411673065275
 84168081280
-MainWindow.xaml;ProgressDialog\ProgressDialog.xaml;Windows\Halaman Utama.xaml;Windows\Tambah Customer.xaml;Windows\Tambah Satuan.xaml;Windows\Tambah Supplier.xaml;Windows\Tambah_Kategori.xaml;Windows\Tampilan Detail Jual.xaml;Windows\Tampilan Pembelian.xaml;Windows\Tampilan Reject.xaml;Windows\Tampilan Tabel.xaml;
+MainWindow.xaml;ProgressDialog\ProgressDialog.xaml;Windows\Alihkan Stok.xaml;Windows\Authentication Windows.xaml;Windows\Halaman Utama.xaml;Windows\Tambah Customer.xaml;Windows\Tambah Lokasi.xaml;Windows\Tambah Satuan.xaml;Windows\Tambah Supplier.xaml;Windows\Tambah_Kategori.xaml;Windows\Tampilan Detail Jual.xaml;Windows\Tampilan Pembelian.xaml;Windows\Tampilan Reject.xaml;Windows\Tampilan Tabel.xaml;
 
-False
+True
 
