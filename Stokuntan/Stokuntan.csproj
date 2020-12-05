@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.95.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.3\lib\net40\ClosedXML.dll</HintPath>
@@ -99,6 +102,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -123,13 +127,19 @@
     <Compile Include="Classes\ComboBoxItem.cs" />
     <Compile Include="Classes\DataGridAttr.cs" />
     <Compile Include="Classes\DetailPenjualan.cs" />
+    <Compile Include="Classes\ManajemenBeban.cs" />
+    <Compile Include="Classes\ManajemenPiutang.cs" />
+    <Compile Include="Classes\ManajemenUtang.cs" />
     <Compile Include="Classes\MinJualTemp.cs" />
     <Compile Include="DatabaseModel\IDatabase.cs" />
+    <Compile Include="DatabaseModel\RiwayatBayarPiutang.cs" />
+    <Compile Include="DatabaseModel\RiwayatBayarUtang.cs" />
     <Compile Include="DatabaseModel\TabelAkun.cs" />
     <Compile Include="DatabaseModel\TabelBeban.cs" />
     <Compile Include="DatabaseModel\TabelCustomer.cs" />
     <Compile Include="DatabaseModel\TabelKategori.cs" />
     <Compile Include="DatabaseModel\TabelLokasi.cs" />
+    <Compile Include="DatabaseModel\TabelPembelian.cs" />
     <Compile Include="DatabaseModel\TabelPenjualan.cs" />
     <Compile Include="DatabaseModel\TabelRealStok.cs" />
     <Compile Include="DatabaseModel\TabelReject.cs" />
@@ -262,7 +272,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <Resource Include="Images\Refund.png" />
+    <Resource Include="Images\Wallet.png" />
+    <Content Include="Stokuntan.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="app.manifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

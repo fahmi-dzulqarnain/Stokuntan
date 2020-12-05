@@ -36,12 +36,13 @@ namespace Stokuntan.Classes
             Customer = new List<string>();
             Lokasi = new List<string>();
             SebabReject = new List<string>() { "Busuk", "Hilang", "Rusak", "Lain Lain" };
-            KategoriCari = new List<string>() { "Tanggal Masuk", "Kategori", "Supplier", "Merek", "Deskripsi" };
+            KategoriCari = new List<string>() { "Tanggal Beli", "Supplier", "Lokasi", "Ref. / No. Nota" };
             KategoriJual = new List<string>() { "Tanggal Transaksi", "Customer" };
-            Metode = new List<string>() { "Cash / Bank", "Utang" };
-            MetodeJual = new List<string>() { "Cash / Bank", "Piutang" };
+
+            Metode = new List<string>() { "Cash / Bank", "Utang", "Cicilan" };
+            MetodeJual = new List<string>() { "Cash / Bank", "Piutang", "Cicilan" };
             JenisBeban = new List<string>() { "Beban Gaji", "Beban Listrik / Air", "Beban Telepon / Internet", "Beban Perlengkapan" };
-            FieldTotal = new List<string>() { "Pengurangan / Pengambilan Kas", "Penambahan Kas", "Penambahan Utang", "Pelunasan Utang", "Pelunasan Piutang" };
+            FieldTotal = new List<string>() { "Pengurangan / Pengambilan Kas", "Penambahan Kas" };
             Bulan = new List<string>() { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" };
             ScreenWidth = Halaman_Utama.ScreenWidth;
             BacaDatabase();

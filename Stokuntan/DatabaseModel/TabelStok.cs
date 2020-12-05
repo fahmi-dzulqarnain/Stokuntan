@@ -3,7 +3,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace Stokuntan.DatabaseModel
 {
-    class TabelStok
+    class TabelStok // Maksudnya Tabel Pembelian
     {
         [PrimaryKey]
         public int ID_STOK { get; set; }
@@ -15,9 +15,10 @@ namespace Stokuntan.DatabaseModel
         public string SATUAN { get; set; }
         public string NO_NOTA_REF { get; set; }
         public int HARGA_BELI { get; set; }
+        public int TOTAL_HARGA { get; set; }
         public int HARGA_JUAL { get; set; }
         public string SATUAN_JUAL { get; set; }
-        public string METODE_BAYAR { get; set; } // Utang / Cash
+        //public string METODE_BAYAR { get; set; } // Utang / Cash
         public int ID_SUPPLIER { get; set; }
     }
 }

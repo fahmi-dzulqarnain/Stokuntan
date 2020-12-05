@@ -10,6 +10,7 @@ namespace Stokuntan.DatabaseModel
         public double TOTAL_STOK { get; set; }
         public string SATUAN_STOK { get; set; }
         public int STOK_DLM_GRAM { get; set; }
+        public int HARGA_BELI { get; set; }
         public string HARGA_JUAL_PER { get; set; } // Dalam Satuan Ons atau Kg | Cth. 100.000/Ons
         public string LOKASI { get; set; }
         public override string ToString()

@@ -28,8 +28,8 @@ namespace Stokuntan
             try
             {
                 InitializeComponent();
-                new IDatabase().DumpToDatabaseIfEmpty();
-                CekBiarMasuk();
+                if (db != null) CekBiarMasuk();
+                else Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }           
         }

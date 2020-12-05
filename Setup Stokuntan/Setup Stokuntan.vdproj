@@ -33,14 +33,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0173602E07D6E37970882F326102E2B9"
-        "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
+        "MsmKey" = "8:_00A3F67C5A28424FA4D03F2DC87BE97E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0190512763CD4B2DB546AC2B268DD191"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_0173602E07D6E37970882F326102E2B9"
+        "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,12 +177,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_527F7C6D5FBB4539BD2572D5850FE0E6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_576C5579151949F633328A8616A205BB"
         "OwnerKey" = "8:_04038090CE997D1BE7E7E351B914ABD4"
         "MsmSig" = "8:_UNDEFINED"
@@ -251,12 +245,6 @@
         {
         "MsmKey" = "8:_63ED887A6533315B9F44FDFFC6505402"
         "OwnerKey" = "8:_786E4D9542C44DBAB5F8570390F6967B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_64A8094B802446D1BC701CA58FDD61F7"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1232,6 +1220,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -1256,6 +1252,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -1317,6 +1321,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_00A3F67C5A28424FA4D03F2DC87BE97E"
+            {
+            "SourcePath" = "8:..\\..\\..\\1. Mid Edukasi Projects\\x64\\e_sqlite3.dll"
+            "TargetName" = "8:e_sqlite3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_959D4BBE409A4ACE9DDD2098ED47910D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0173602E07D6E37970882F326102E2B9"
             {
             "AssemblyRegister" = "3:1"
@@ -1346,26 +1370,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0190512763CD4B2DB546AC2B268DD191"
-            {
-            "SourcePath" = "8:..\\..\\..\\1. Mid Edukasi Projects\\x64\\e_sqlite3.dll"
-            "TargetName" = "8:e_sqlite3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_959D4BBE409A4ACE9DDD2098ED47910D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_04038090CE997D1BE7E7E351B914ABD4"
@@ -1833,26 +1837,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_527F7C6D5FBB4539BD2572D5850FE0E6"
-            {
-            "SourcePath" = "8:..\\..\\..\\1. Mid Edukasi Projects\\x86\\sqlite3.dll"
-            "TargetName" = "8:sqlite3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_0252B142763C4D05B85517F3FE2F1B39"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_576C5579151949F633328A8616A205BB"
             {
             "AssemblyRegister" = "3:1"
@@ -1995,26 +1979,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_64A8094B802446D1BC701CA58FDD61F7"
-            {
-            "SourcePath" = "8:..\\..\\..\\1. Mid Edukasi Projects\\x64\\sqlite3.dll"
-            "TargetName" = "8:sqlite3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_959D4BBE409A4ACE9DDD2098ED47910D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_69942B19E0809ACD14251572D0D63735"
@@ -3739,7 +3703,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup Stokuntan"
         "ProductCode" = "8:{9A1EF2F0-AA67-47FA-A4F0-D071AA94C84A}"
-        "PackageCode" = "8:{3029E528-059E-4FA9-AE26-7152C7ADD478}"
+        "PackageCode" = "8:{5AB9D329-281B-4E2C-8E04-C6841E36DD32}"
         "UpgradeCode" = "8:{971CFFF0-5A09-47ED-BF52-FB3973BF2CCE}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -4308,6 +4272,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{58F1E233-749A-4449-BA18-13F554081560}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8FAD42CC8C104D6C869A232B2C8C7163"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6386CE0A0414742BED2E702E8ECFC48"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
             "OutputProjectGuid" = "8:{58F1E233-749A-4449-BA18-13F554081560}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
